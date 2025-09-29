@@ -41,18 +41,18 @@
 
                     <tbody>
                         @foreach($cursos as $curso)
-                        <tr>
-                            <td>{{ $curso->name }}</td>
-                            <td>{{ $curso->description }}</td>
-                            <td>
-                                <button class="btn btn-success">
-                                    Editar
-                                </button>
-                                <button class="btn btn-danger">
-                                    Excluir
-                                </button>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>{{ $curso->name }}</td>
+                                <td>{{ $curso->description }}</td>
+                                <td>
+                                    <a href="{{ route('curso.edit', $curso->id) }}" class="btn btn-success">
+                                        Editar
+                                    </a>
+                                    <a href="{{ route('curso.destroy', $curso->id) }}" class="btn btn-danger">
+                                        Excluir
+                                    </a>
+                                </td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>
