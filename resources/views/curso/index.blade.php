@@ -19,15 +19,15 @@
                 </div>
 
                 @if (session('success'))
-                    <div class="alert alert-success mt-2" role="alert">
-                        {{ session('success') }}
-                    </div>
+                <div class="alert alert-success mt-2" role="alert">
+                    {{ session('success') }}
+                </div>
                 @endif
 
                 @if (session('error'))
-                    <div class="alert alert-danger mt-2" role="alert">
-                        {{ session('error') }}
-                    </div>
+                <div class="alert alert-danger mt-2" role="alert">
+                    {{ session('error') }}
+                </div>
                 @endif
 
                 <table class="table table-hover table-striped mt-5">
@@ -44,13 +44,18 @@
                             <tr>
                                 <td>{{ $curso->name }}</td>
                                 <td>{{ $curso->description }}</td>
-                                <td>
+                                <td class="d-flex justify-content-start gap-2">
                                     <a href="{{ route('curso.edit', $curso->id) }}" class="btn btn-success">
                                         Editar
                                     </a>
-                                    <a href="{{ route('curso.destroy', $curso->id) }}" class="btn btn-danger">
-                                        Excluir
-                                    </a>
+
+                                    <form action="{{ route('curso.destroy', $curso->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger">
+                                            Excluir
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
